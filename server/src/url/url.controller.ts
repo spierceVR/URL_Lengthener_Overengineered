@@ -4,7 +4,8 @@ import * as nestAccessControl from "nest-access-control";
 import { URLService } from "./url.service";
 import { URLControllerBase } from "./base/url.controller.base";
 import { URL } from "./base/URL";
-import { NotFoundException } from "@nestjs/common";
+import { NotFoundException, Redirect } from "@nestjs/common";
+import { Public } from "src/decorators/public.decorator";
 
 @swagger.ApiTags("urls")
 @common.Controller("urls")
@@ -17,8 +18,10 @@ export class URLController extends URLControllerBase {
 		super(service, rolesBuilder);
 	}
 
+  @Public()
 	@swagger.ApiOperation({ summary: "Redirect to mapped URL" })
 	@common.Get(":lengthenedUrl")
+  @Redirect()
 	async redirectToMappedURL(
 		@common.Param("lengthenedUrl") lengthenedUrl: string
 	) {
@@ -28,6 +31,6 @@ export class URLController extends URLControllerBase {
 			},
 		});
 		if (!stored_url) throw new NotFoundException();
-		return common.Redirect("http://" + stored_url.originalUrl, 301);
+		return {url : "http://" + stored_url.originalUrl, statusCode: 301};
 	}
 }

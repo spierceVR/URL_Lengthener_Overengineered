@@ -1,0 +1,166 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createURL(data: URLCreateInput!): URL!
+  createURLMapping(input: String!): URL!
+  createUser(data: UserCreateInput!): User!
+  deleteURL(where: URLWhereUniqueInput!): URL!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateURL(data: URLUpdateInput!, where: URLWhereUniqueInput!): URL!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Query {
+  _urlsMeta(orderBy: [URLOrderByInput!], skip: Float, take: Float, where: URLWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  url(where: URLWhereUniqueInput!): URL
+  urls(orderBy: [URLOrderByInput!], skip: Float, take: Float, where: URLWhereInput): [URL!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type URL {
+  createdAt: DateTime!
+  id: String!
+  lengthenedUrl: String!
+  originalUrl: String!
+}
+
+input URLCreateInput {
+  lengthenedUrl: String!
+  originalUrl: String!
+}
+
+input URLOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  lengthenedUrl: SortOrder
+  originalUrl: SortOrder
+}
+
+input URLUpdateInput {
+  lengthenedUrl: String
+  originalUrl: String
+}
+
+input URLWhereInput {
+  id: StringFilter
+  lengthenedUrl: StringFilter
+  originalUrl: StringFilter
+}
+
+input URLWhereUniqueInput {
+  id: String!
+}
+
+type User {
+  createdAt: DateTime!
+  firstName: String
+  id: String!
+  lastName: String
+  roles: [String!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  firstName: String
+  lastName: String
+  password: String!
+  roles: [String!]!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  firstName: String
+  lastName: String
+  password: String
+  roles: [String!]
+  username: String
+}
+
+input UserWhereInput {
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}

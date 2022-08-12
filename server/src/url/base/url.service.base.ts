@@ -18,32 +18,32 @@ export class URLServiceBase {
   async count<T extends Prisma.URLFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.URLFindManyArgs>
   ): Promise<number> {
-    return this.prisma.url.count(args);
+    return this.prisma.uRL.count(args);
   }
 
   async findMany<T extends Prisma.URLFindManyArgs>(
     args: Prisma.SelectSubset<T, Prisma.URLFindManyArgs>
   ): Promise<URL[]> {
-    return this.prisma.url.findMany(args);
+    return this.prisma.uRL.findMany(args);
   }
   async findOne<T extends Prisma.URLFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.URLFindUniqueArgs>
   ): Promise<URL | null> {
-    return this.prisma.url.findUnique(args);
+    return this.prisma.uRL.findUnique(args);
   }
   async create<T extends Prisma.URLCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.URLCreateArgs>
   ): Promise<URL> {
-    return this.prisma.url.create<T>(args);
+    return this.prisma.uRL.create<T>(args);
   }
   async update<T extends Prisma.URLUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.URLUpdateArgs>
   ): Promise<URL> {
-    return this.prisma.url.update<T>(args);
+    return this.prisma.uRL.update<T>(args);
   }
   async delete<T extends Prisma.URLDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.URLDeleteArgs>
   ): Promise<URL> {
-    return this.prisma.url.delete(args);
+    return this.prisma.uRL.delete(args);
   }
 }

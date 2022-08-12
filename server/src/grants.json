@@ -62,12 +62,6 @@
   {
     "role": "admin",
     "resource": "URL",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "URL",
     "action": "delete:any",
     "attributes": "*"
   }

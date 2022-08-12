@@ -20,7 +20,6 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { URLService } from "../url.service";
 import { Public } from "../../decorators/public.decorator";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { URLCreateInput } from "./URLCreateInput";
 import { URLWhereInput } from "./URLWhereInput";
@@ -70,12 +69,7 @@ export class URLControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "URL",
-    action: "read",
-    possession: "own",
-  })
+  @Public()
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: URL })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
